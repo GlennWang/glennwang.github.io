@@ -10,7 +10,7 @@ header, .dropdown_menu, .container, footer {
 }
 
 header, section, .container, footer {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 header {
@@ -61,14 +61,13 @@ nav li {
 .dropdown_menu {
     position: relative;
     background:white;
-    top:0;
-    width: 100%;
+    top:-0.1px;
     transition:all 0.5s;
     z-index: 1;
 }
 
 .fixed-nav .dropdown_menu {
-    position: fixed;
+    position: sticky;
 }
 
 .container {
@@ -83,4 +82,8 @@ main {
 aside {
     width: 400px;
     background-color: #f0f0f0;
+}
+
+footer {
+    background-color:bisque;
 }
