@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body {
+    background: antiquewhite;
+}
+
 header, .dropdown_menu, .container, footer {
     width: 100%;
     max-width: 1200px;
@@ -77,13 +81,44 @@ nav li {
 
 main {
     flex: 1;
+    
+}
+
+.content {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-right: 15px;
+
 }
 
 aside {
     width: 400px;
-    background-color: #f0f0f0;
+    padding-left: 15px;
 }
+
+.sidebar {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 40px;
+ 
+}
+
+article {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 footer {
     background-color:bisque;
+}
+
+/* 響應式設計語法 */
+@media screen and (max-width: 1000px) {
+    img {
+        width: 100%;
+    }
 }
