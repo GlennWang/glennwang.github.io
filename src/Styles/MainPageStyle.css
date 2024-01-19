@@ -7,6 +7,10 @@ body {
     background: antiquewhite;
 }
 
+html {
+    font-size: 16px;
+}
+
 header, .dropdown_menu, .container, footer {
     width: 100%;
     max-width: 1200px;
@@ -31,7 +35,7 @@ header {
     position: absolute;
     top: 0;
     line-height: 80px;
-    background-image: url(../images/logo.png);
+    background-image: url(https://raw.githubusercontent.com/GlennWang/glennwang.github.io/main/src/images/Logo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 180%;
@@ -87,6 +91,7 @@ nav li {
 
 .dropdown_menu a {
     line-height: 40px; /* 讓dropdown menu高度變高 */
+    padding: 0 15px;
 }
 
 /* === main content layout Styles === */
@@ -129,14 +134,46 @@ section {
 }
 
 section h2 {
+    font-size: 1.6rem;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
 
+section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.1rem;
+}
+
+section a {
+    text-decoration: none;
+    border: 1px solid #ACACAC;
+    padding:10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section a:hover {
+    text-decoration: none;
+}
+
+.first_section {
+    margin-top: 0 !important;
 }
 
 article {
     display:flex;
     flex-direction:column;
-    /* align-items: center; */
-    /* justify-content: center; */
+    margin-bottom: 40px;
+}
+
+article p {
+    margin: 10px 0;
 }
 
 /* === Image Styles === */
