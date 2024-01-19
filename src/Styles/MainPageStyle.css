@@ -108,8 +108,8 @@ aside {
 article {
     display:flex;
     flex-direction:column;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 section {
@@ -130,17 +130,13 @@ img {
     height: 100%;
 }
 
-/* 你原始的定義 */
-/* img.original-size {
-    width: 800px;
-    height: 400px;
-} */
-
 footer {
     background-color:bisque;
 }
 
 /* 響應式設計語法 */
 @media screen and (max-width: 1000px) {
-
+    aside {
+        display: none;
+    }
 }
