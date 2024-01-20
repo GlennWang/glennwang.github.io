@@ -174,6 +174,7 @@ section a:hover {
     position: relative;
     width: 100%; /* 設置父元素的寬度 */
     padding-bottom: 50%; /* 2:1 比例的高度，為寬度的一半 */
+    margin-bottom: 15px;
 }
 
 img {

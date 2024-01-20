@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glenn website!</title>
     <link rel="stylesheet" href="src/Styles/MainPageStyle.css">
+    <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
   </head>
   <body>
     <header>
       <button class="menu">&#9776;</button>
-      <h1 id="Logo">Glenn's blog</h1>
+      <a href="/index.html"><h1 id="Logo">Glenn's blog</h1></a>
       <nav>
         <ul>
           <li><a href="#">預留位置</a></li>
@@ -33,13 +34,28 @@
           <section class="first_section">
             <h2>最新文章</h2>
             <article>
-              <h3>Article Title 1</h3>
+              <h3>網頁設計問題集</h3>
               <div class="img-container">
                 <img src="src/images/p1.png" alt="Article Thumbnail 1">
               </div>
               
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod hendrerit ligula, vel bibendum sem fermentum vel. Ut luctus neque in enim varius, vel rhoncus turpis cursus. Nullam bibendum felis ut mauris bibendum, vel efficitur velit tincidunt. Integer dignissim efficitur tellus, nec feugiat ex malesuada quis. Sed at risus eget lectus bibendum dapibus. Nam laoreet, urna vitae pellentesque ultricies, ex sapien tincidunt orci, sit amet auctor eros turpis ac quam.</p>
-              <a href="article1.html">Read more</a>
+              <p>能不能在同一個HTML文件連結多個CSS文件?
+                可以
+                
+                對多個選擇器定義多個樣式之後，可不可以再單獨定義樣式?
+                可以
+                
+                #cross_slider, #dropdown_menu, footer, header {
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                
+                header {
+                    /* 額外的樣式設定 */
+                }
+                是允許的。...</p>
+              <a href="/post/web_design_problem_set.html">Read more</a>
             </article>
   
             <article>
