@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glenn website!</title>
+    <link rel="stylesheet" href="../src/Styles/PostStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header>
+      <button class="menu">&#9776;</button>
+      <h3 id="Logo">Glenn's blog</h3>
+      <nav>
+        <ul>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+        </ul>
+      </nav>
+    </header>
+    <nav class="dropdown_menu">
+      <ul>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <main>
+        <div class="content">
+<article class="markdown-body">
+<h1 dir="auto">網頁設計問題集</h1>
+<h3 dir="auto">能不能在同一個HTML文件連結多個CSS文件?</h3>
+<p dir="auto">可以</p>
+<h3 dir="auto">對多個選擇器定義多個樣式之後，可不可以再單獨定義樣式?</h3>
+<p dir="auto">可以</p>
+<div class="highlight highlight-source-css" dir="auto"><pre class="notranslate"><span class="pl-kos">#</span><span class="pl-c1">cross_slider</span><span class="pl-kos">,</span> <span class="pl-kos">#</span><span class="pl-c1">dropdown_menu</span><span class="pl-kos">,</span> <span class="pl-ent">footer</span><span class="pl-kos">,</span> <span class="pl-ent">header</span> {
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>;
+    <span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">0</span> auto;
+}
+
+<span class="pl-ent">header</span> {
+    <span class="pl-c">/* 額外的樣式設定 */</span>
+}</pre></div>
+<p dir="auto">是允許的。</p>
+<h3 dir="auto">HTML的全局屬性中，class跟id有什麼差別?</h3>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>重複使用：</strong></p>
+<ul dir="auto">
+<li><strong>class：</strong> 可以在一個HTML頁面中多次使用相同的class。一個元素可以同時擁有多個class。</li>
+<li><strong>id：</strong> 在整個HTML頁面中，每個id值必須是唯一的。一個元素只能有一個id。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>CSS選擇器：</strong></p>
+<ul dir="auto">
+<li><strong>class：</strong> 在CSS中，你可以使用<code class="notranslate">.</code>（點）來選擇一個class。例如，<code class="notranslate">.my-class</code>。</li>
+<li><strong>id：</strong> 在CSS中，你可以使用<code class="notranslate">#</code>（井號）來選擇一個id。例如，<code class="notranslate">#my-id</code>。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>JavaScript操作：</strong></p>
+<ul dir="auto">
+<li><strong>class：</strong> 你可以使用JavaScript操作具有相同class的多個元素。</li>
+<li><strong>id：</strong> 由於id必須是唯一的，使用JavaScript時，通常更容易選擇和操作單個元素。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>樣式優先順序：</strong></p>
+<ul dir="auto">
+<li>如果一個元素同時擁有相同屬性的class和id，id的樣式優先於class的樣式。這是因為id的特殊性較高。</li>
+</ul>
+</li>
+</ol>
+<div class="highlight highlight-text-html-basic" dir="auto"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>"<span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>
+    <span class="pl-c">/* 使用 class */</span>
+    .<span class="pl-c1">box</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> lightblue;
+      <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">padding</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+    }
+
+    <span class="pl-c">/* 使用 id */</span>
+    <span class="pl-kos">#</span><span class="pl-c1">special-box</span> {
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> lightcoral;
+    }
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>Class 與 ID 範例<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>
+  <span class="pl-c">&lt;!-- 使用 class 的元素 --&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">box</span>"<span class="pl-kos">&gt;</span>Box 1<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">box</span>"<span class="pl-kos">&gt;</span>Box 2<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">box</span>"<span class="pl-kos">&gt;</span>Box 3<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+
+  <span class="pl-c">&lt;!-- 使用 id 的元素 --&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">special-box</span>" <span class="pl-c1">class</span>="<span class="pl-s">box</span>"<span class="pl-kos">&gt;</span>Special Box<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>
+<p dir="auto">在這個例子中：</p>
+<ul dir="auto">
+<li>使用了class名為 "box" 的樣式來定義一個基本的方框樣式。</li>
+<li>使用id名為 "special-box" 的樣式，覆蓋了一個具有相同 "box" class的特殊方框，使其背景色為lightcoral。</li>
+<li>"box" class被應用到多個元素上，而 "special-box" id僅被應用到一個元素上。</li>
+</ul>
+<p dir="auto">也就是說，在定義重複樣式的時候首先考慮的是class，如果有進一步客製化需求時，則使用id。</p>
+<h3 dir="auto">在HTML中H1是不是最好只有一個，H1~H6各有什麼用途?</h3>
+<p dir="auto">HTML中的標題標籤<code class="notranslate">&lt;h1&gt;</code>到<code class="notranslate">&lt;h6&gt;</code>用於定義文檔的標題結構，其各自的用途和應用如下：</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><code class="notranslate">&lt;h1&gt;</code>：最高級標題，表示頁面的主題或主要部分的標題。在一個頁面中，應該只有一個<code class="notranslate">&lt;h1&gt;</code>，用於描述整個頁面的主題。</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">&lt;h2&gt;</code>：次級標題，用於表示頁面主題的子部分或更詳細的內容。可以有多個<code class="notranslate">&lt;h2&gt;</code>，表示頁面的不同章節或主題的不同方面。</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">&lt;h3&gt;</code>：用於表示更具體的子標題或章節中的子部分。可以在<code class="notranslate">&lt;h2&gt;</code>的下面使用多個<code class="notranslate">&lt;h3&gt;</code>。</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">&lt;h4&gt;</code>、<code class="notranslate">&lt;h5&gt;</code>、<code class="notranslate">&lt;h6&gt;</code>：分別用於表示較低級別的標題，用於更詳細的子部分。<code class="notranslate">&lt;h4&gt;</code>比<code class="notranslate">&lt;h3&gt;</code>更具體，依此類推。在頁面中，可以根據需要使用多個<code class="notranslate">&lt;h4&gt;</code>、<code class="notranslate">&lt;h5&gt;</code>和<code class="notranslate">&lt;h6&gt;</code>。</p>
+</li>
+</ol>
+<p dir="auto">在使用標題標籤時應考慮頁面的邏輯結構，確保標題的巢狀關係和級別符合文檔的層次結構。正確使用標題有助於提高文檔的可讀性、可訪問性和搜索引擎優化。</p>
+<h3 dir="auto">為什麼有時候<code class="notranslate">position: absolute;</code>看起來是失效的?</h3>
+<p dir="auto">當我們使用 CSS 中的 <code class="notranslate">position</code> 屬性時，我們可以控制元素的定位方式。其中，<code class="notranslate">relative</code> 和 <code class="notranslate">absolute</code> 是兩種不同的定位方式。</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong><code class="notranslate">position: relative;</code></strong>:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">元素的位置相對於其原始位置。換句話說，元素會保持在文檔流中的原始位置，但你可以使用 <code class="notranslate">top</code>、<code class="notranslate">right</code>、<code class="notranslate">bottom</code>、<code class="notranslate">left</code> 屬性來調整元素相對於原始位置的偏移量。</p>
+</li>
+<li>
+<p dir="auto">如果某個元素設置為 <code class="notranslate">position: relative;</code>，那麼它的子元素（如果有的話）的定位，通常是相對於這個父元素。</p>
+</li>
+<li>
+<p dir="auto">例子：</p>
+<div class="highlight highlight-source-css" dir="auto"><pre class="notranslate">.<span class="pl-c1">parent</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> relative;
+}
+
+.<span class="pl-c1">child</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> absolute;
+    <span class="pl-c1">top</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">left</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;
+}</pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong><code class="notranslate">position: absolute;</code></strong>:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">元素的位置相對於其最近的非<code class="notranslate">static</code>（非默認）定位的父元素。如果沒有這樣的父元素，則相對於文檔的 <code class="notranslate">&lt;html&gt;</code> 元素。</p>
+</li>
+<li>
+<p dir="auto">這意味著給定元素不再保持在文檔流中，而是可以自由移動，通常是相對於最接近的非<code class="notranslate">static</code>父元素。</p>
+</li>
+<li>
+<p dir="auto">例子：</p>
+<div class="highlight highlight-source-css" dir="auto"><pre class="notranslate">.<span class="pl-c1">parent</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> relative;
+}
+
+.<span class="pl-c1">child</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> absolute;
+    <span class="pl-c1">top</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">left</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;
+}</pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<p dir="auto">簡單來說，如果你發現<code class="notranslate">position: absolute;</code>失效，嘗試在你預想中的父容器裡面加一個<code class="notranslate">position: absolute;</code>。</p>
+<h3 dir="auto">AJAX跟Fetch API差在哪?</h3>
+<p dir="auto"><code class="notranslate">AJAX</code>（Asynchronous JavaScript and XML）和<code class="notranslate">Fetch API</code>都是用於在瀏覽器中發送HTTP請求的技術，但它們之間有一些重要的區別：</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>介面設計:</strong></p>
+<ul dir="auto">
+<li><strong>AJAX:</strong> 基於XMLHttpRequest物件，它是瀏覽器提供的原始API之一。AJAX的使用通常需要設定回調函數，以處理成功或失敗的請求。</li>
+<li><strong>Fetch API:</strong> 提供了更現代且更強大的接口，使用Promise概念，更容易理解和使用。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>語法:</strong></p>
+<ul dir="auto">
+<li><strong>AJAX:</strong> 使用<code class="notranslate">XMLHttpRequest</code>對象，包括設置回調函數、監聽事件等。具有比較複雜的語法。</li>
+<li><strong>Fetch API:</strong> 使用<code class="notranslate">fetch</code>函數，它是一個簡單而強大的API，提供了更簡潔的語法，並返回Promise對象。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>預設行為:</strong></p>
+<ul dir="auto">
+<li><strong>AJAX:</strong> 在預設情況下，AJAX並不處理JSON格式的數據，需要額外的處理。它也不支援流式操作。</li>
+<li><strong>Fetch API:</strong> 在處理JSON數據方面更為方便，並支援流式操作。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>錯誤處理:</strong></p>
+<ul dir="auto">
+<li><strong>AJAX:</strong> 通常使用回調函數進行錯誤處理。</li>
+<li><strong>Fetch API:</strong> 使用Promise的<code class="notranslate">catch</code>方法進行錯誤處理，使錯誤處理更一致且更容易理解。</li>
+</ul>
+</li>
+</ol>
+<p dir="auto">總的來說，Fetch API提供了更簡單、現代且強大的方式來處理HTTP請求，特別適用於當前JavaScript的標準。它更符合Promise的使用，並具有更清晰的語法，使開發者更容易理解和使用。</p>
+<h3 dir="auto">要怎麼讓圖片按照一定比例縮放?</h3>
+<div class="highlight highlight-source-css" dir="auto"><pre class="notranslate">.<span class="pl-c1">img-container</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> relative;
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>; <span class="pl-c">/* 設置父元素的寬度 */</span>
+    <span class="pl-c1">padding-bottom</span><span class="pl-kos">:</span> <span class="pl-c1">50<span class="pl-smi">%</span></span>; <span class="pl-c">/* 2:1 比例的高度，為寬度的一半 */</span>
+}
+
+<span class="pl-ent">img</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> absolute;
+    <span class="pl-c1">top</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    <span class="pl-c1">left</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>;
+    <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>;
+}</pre></div>
+<p dir="auto">在 HTML 中使用：</p>
+<div class="highlight highlight-text-html-basic" dir="auto"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">img-container</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">your-image.jpg</span>" <span class="pl-c1">alt</span>="<span class="pl-s">Your Image</span>"<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>
+<p dir="auto"><code class="notranslate">img</code> 會根據 <code class="notranslate">.img-container</code> 的寬度來動態調整，同時保持 2:1 的高度和寬度比例。</p>
+</article>
+        </div>
+        
+      </main>
+      <aside>
+        <div class="sidebar">
+          <section class="first_section">
+            <p>搜尋框預定地</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+            <p>yeeyeeyeeyeeyeeyee</p>
+          </section>
+          <section>
+            <p>section2</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </section>
+          <section>
+            <p>section3</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </section>
+        </div>
+
+        <div class="sidebar">
+          <Section class="first_section">
+            <p>其他連結預定地</p>
+            <p>yes</p>
+            <p>yes</p>
+            <p>yes</p>
+            <p>yes</p>
+            <p>yes</p>
+            <p>yes</p>
+            <p>yes</p>
+          </Section>
+
+        </div>
+        <!-- Your aside content goes here -->
+      </aside>
+    </div>
+
+    <footer>
+      <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
+    </footer>
+  </body>
+  <script>
+    // 取得導覽列元素
+    const nav = document.querySelector('.dropdown_menu');
+    // 取得導覽列元素頂端位置
+    const topOfNav = nav.offsetTop;
+
+    function fixNav() {
+      // 如果觀景窗頂部位置值大於導覽列頂部就沾黏，反之取消沾黏
+      if(window.scrollY >= topOfNav) {
+        document.body.classList.add('fixed-nav');
+      } else {
+        document.body.classList.remove('fixed-nav');
+      }
+    }
+
+    // 監聽滾動事件
+    window.addEventListener('scroll', fixNav);
+  </script>
+</html>
