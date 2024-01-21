@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python range() 函數用法</title>
+    <link rel="stylesheet" href="../src/Styles/PostPageStyle.css">
+    <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header>
+      <button class="menu">&#9776;</button>
+      <a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
+      <nav>
+        <ul>
+          <li><a href="requirement.html">需求功能</a></li>
+          <li><a href="changelog.html">更新日誌</a></li>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+        </ul>
+      </nav>
+    </header>
+    <nav class="dropdown_menu">
+      <ul>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+
+      <main>
+        <div class="content">
+            <div class="img-container">
+                <img src="../src/images/python.png" alt="Article Thumbnail 1">
+            </div>
+<article class="markdown-body">
+<h1 dir="auto">Python range() 函數用法</h1>
+<h3 dir="auto">簡介</h3>
+<p dir="auto"><code class="notranslate">range()</code> 函數是 Python 中的一個函數，用於生成一個整數序列，通常在迴圈中使用。該函數返回的是一個特殊的物件，稱為<strong>可迭代物件</strong>（iterable object）。</p>
+<p dir="auto">要理解什麼是可迭代物件，最快速的就是放出一個可迭代物件給你看，比如：</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-s1">my_list</span> <span class="pl-c1">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>]</pre></div>
+<p dir="auto">list和string就是可迭代的，可以用以下方式迭代：</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">for</span> <span class="pl-s1">item</span> <span class="pl-c1">in</span> <span class="pl-s1">my_list</span>:
+    <span class="pl-en">print</span>(<span class="pl-s1">item</span>)</pre></div>
+<p dir="auto"><code class="notranslate">range()</code> 函數的可迭代物件是一種可以逐個訪問元素的物件，但它並不提前在內存中存儲所有元素，而是在需要時按需生成。這樣可以節省空間，尤其是在處理大型範圍時。</p>
+<h3 dir="auto">語法</h3>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-en">range</span>(<span class="pl-s1">stop</span>)
+<span class="pl-en">range</span>(<span class="pl-s1">start</span>, <span class="pl-s1">stop</span>[, <span class="pl-s1">step</span>])</pre></div>
+<ul dir="auto">
+<li><code class="notranslate">range()</code>預設的<strong>start</strong>是0，所以<code class="notranslate">range(10)</code>等於<code class="notranslate">range(0,10)</code>。</li>
+<li><code class="notranslate">range()</code>的計數到<strong>stop</strong>，但不包含<strong>stop</strong>，<code class="notranslate">range(0,4)</code>是0到3，沒有4。</li>
+<li><code class="notranslate">range()</code>的<strong>step</strong>就是一次走多少步，預設是1，所以如果要<code class="notranslate">0 2 4</code>的話要寫<code class="notranslate">range(0,5,2)</code></li>
+</ul>
+<h3 dir="auto">基礎用法</h3>
+<h4 dir="auto"><code class="notranslate">range(stop=5)</code></h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">5</span>):
+    <span class="pl-en">print</span>(<span class="pl-s1">i</span>)</pre></div>
+<p dir="auto">上面的程式碼將輸出：</p>
+<pre class="notranslate"><code class="notranslate">0
+1
+2
+3
+4
+</code></pre>
+<h4 dir="auto"><code class="notranslate">range(start=1, stop=5)</code></h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">1</span>, <span class="pl-c1">5</span>):
+    <span class="pl-en">print</span>(<span class="pl-s1">i</span>)</pre></div>
+<p dir="auto">上面的程式碼將輸出：</p>
+<pre class="notranslate"><code class="notranslate">1
+2
+3
+4
+</code></pre>
+<h4 dir="auto"><code class="notranslate">range(start=0, stop=5[, step=2])</code></h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-c1">5</span>, <span class="pl-c1">2</span>):
+    <span class="pl-en">print</span>(<span class="pl-s1">i</span>)</pre></div>
+<p dir="auto">上面的程式碼將輸出：</p>
+<pre class="notranslate"><code class="notranslate">0
+2
+4
+</code></pre>
+<h4 dir="auto"><code class="notranslate">range(start=5, stop=0[, step=-1])</code></h4>
+<p dir="auto">也可以反過來輸出，不過<strong>start</strong>的值要大於<strong>stop</strong>的值。</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">5</span>, <span class="pl-c1">0</span>, <span class="pl-c1">-</span><span class="pl-c1">1</span>):
+    <span class="pl-en">print</span>(<span class="pl-s1">i</span>)</pre></div>
+<p dir="auto">上面的程式碼將輸出：</p>
+<pre class="notranslate"><code class="notranslate">5
+4
+3
+2
+1
+</code></pre>
+<h3 dir="auto">細節</h3>
+<p dir="auto">總之，<code class="notranslate">range()</code> 返回的是一個用於表示整數序列的可迭代物件。在python2.x中，他返回的是一個list，但在python3中不是。</p>
+<p dir="auto">如果你需要將其轉換為list，可以使用 <code class="notranslate">list()</code> 函數：</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-s1">my_list</span> <span class="pl-c1">=</span> <span class="pl-en">list</span>(<span class="pl-en">range</span>(<span class="pl-c1">5</span>))
+<span class="pl-en">print</span>(<span class="pl-s1">my_list</span>)</pre></div>
+<p dir="auto">這將輸出：</p>
+<pre class="notranslate"><code class="notranslate">[0, 1, 2, 3, 4]
+</code></pre>
+<h3 dir="auto"></h3>
+</article>
+        </div>
+      </main>
+
+      <aside>
+        <div class="sidebar">
+          <section class="first_section">
+            <p>搜尋框預定地</p>
+          </section>
+          <section>
+            <p>section2</p>
+          </section>
+          <section>
+            <p>section3</p>
+          </section>
+        </div>
+        <div class="sidebar">
+          <Section class="first_section">
+            <p>其他連結預定地</p>
+          </Section>
+        </div>
+        <!-- Your aside content goes here -->
+      </aside>
+
+    </div>
+
+    <footer>
+      <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
+    </footer>
+    
+    <script src="src/Scripts/sticky-nav.js"></script>
+  </body>
+</html>
