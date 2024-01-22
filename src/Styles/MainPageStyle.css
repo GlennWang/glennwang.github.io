@@ -6,17 +6,7 @@
     --color-link-default:blue;
 }
 
-[data-theme="dark"] {
-    /*dark*/
-    --color-background-default:#121212;
-    --color-content-default:#353535;
-    --color-dropdown-default:#353535;
-    --color-text-default:white;
-    --color-link-default:white;
-}
-
-[data-theme="light"] {
-    /*light*/
+body[data-theme="light"] {
     --color-background-default:antiquewhite;
     --color-content-default:beige;
     --color-dropdown-default:white;
@@ -24,9 +14,18 @@
     --color-link-default:blue;
 }
 
+body[data-theme="dark"] {
+    --color-background-default:#121212;
+    --color-content-default:#353535;
+    --color-dropdown-default:#353535;
+    --color-text-default:white;
+    --color-link-default:white;
+}
+
+
+
 @media (prefers-color-scheme: dark) {
-    :root, [data-theme="dark"] {
-      /*dark*/
+    body, [data-theme="dark"] {
       color-scheme: dark;
       --color-background-default:#121212;
       --color-content-default:#353535;
@@ -34,11 +33,10 @@
       --color-text-default:white;
       --color-link-default:white;
     }
-  }
+}
   
 @media (prefers-color-scheme: light) {
-    :root, [data-theme="light"] {
-      /*light*/
+    body, [data-theme="light"] {
       color-scheme: light;
       --color-background-default:antiquewhite;
       --color-content-default:beige;
