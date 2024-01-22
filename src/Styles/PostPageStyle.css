@@ -1,3 +1,49 @@
+:root {
+    --color-background-default:antiquewhite;
+    --color-content-default:beige;
+    --color-dropdown-default:white;
+    --color-text-default:black;
+    --color-link-default:blue;
+}
+
+[data-theme="light"] {
+    --color-background-default:antiquewhite;
+    --color-content-default:beige;
+    --color-dropdown-default:white;
+    --color-text-default:black;
+    --color-link-default:blue;
+}
+
+[data-theme="dark"] {
+    --color-background-default:#121212;
+    --color-content-default:#353535;
+    --color-dropdown-default:#353535;
+    --color-text-default:white;
+    --color-link-default:white;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --color-background-default:#121212;
+      --color-content-default:#353535;
+      --color-dropdown-default:#353535;
+      --color-text-default:white;
+      --color-link-default:white;
+    }
+}
+  
+@media (prefers-color-scheme: light) {
+    [data-theme="light"] {
+      color-scheme: light;
+      --color-background-default:antiquewhite;
+      --color-content-default:beige;
+      --color-dropdown-default:white;
+      --color-text-default:black;
+      --color-link-default:blue;
+    }
+}
+
 * {
     padding: 0;
     margin: 0;
