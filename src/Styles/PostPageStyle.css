@@ -246,7 +246,7 @@ footer {
 }
 
 .markdown-body {
-    background-color: beige!important;
+    background-color: var(--color-content-default)!important;
 }
 
 /* === Responsive Design Styles === */
