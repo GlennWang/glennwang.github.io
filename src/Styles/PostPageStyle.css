@@ -50,7 +50,8 @@
 }
 
 body {
-    background: antiquewhite;
+    background:var(--color-background-default);
+    color:var(--color-text-default)
 }
 
 html {
@@ -64,7 +65,7 @@ header, .dropdown_menu, .container, footer {
 }
 
 .content, .sidebar, footer {
-    background-color: beige;
+    background-color: var(--color-content-default);
 }
 
 /* === Header Styles === */
@@ -104,6 +105,7 @@ header a {
 
 a {
     text-decoration: none;
+    color: var(--color-link-default);
 }
 
 a:hover {
@@ -125,7 +127,7 @@ nav li {
 
 .dropdown_menu {
     position: relative;
-    background:white;
+    background: var(--color-dropdown-default);
     top:-0.1px;
     transition:all 0.5s;
     z-index: 1;
