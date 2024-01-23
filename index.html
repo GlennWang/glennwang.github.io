@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="src/Styles/MainPageStyle.css">
     <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
   </head>
-  <body>
+  <body data-theme="">
     <header>
       <button class="menu">&#9776;</button>
       <a href="/index.html"><h1 id="Logo">Glenn's blog</h1></a>
@@ -36,7 +36,7 @@
             <article>
               <h3>網頁設計問題集</h3>
               <div class="img-container">
-                <img src="src/images/p1.png" alt="Article Thumbnail 1">
+                <img src="src/images/default.jpg" alt="Article Thumbnail 1">
               </div>
               
               <p>能不能在同一個HTML文件連結多個CSS文件?
@@ -68,12 +68,12 @@
             </article>
   
             <article>
-              <h3>Article Title 2</h3>
+              <h3>演算法筆記-泡沫排序法</h3>
               <div class="img-container">
-                <img src="src/images/p2.png" alt="Article Thumbnail 2">
+                <img src="src/images/default.jpg" alt="Article Thumbnail 2">
               </div>
-              <p>Short description of the article 2...</p>
-              <a href="article2.html">Read more</a>
+              <p>泡沫排序法(又稱冒泡排序法)是一種基本的排序演算法，它的原理很容易理解。我們可以透過一個簡單的例子來解釋。...</p>
+              <a href="post/bubblesort.html">Read more</a>
             </article>
   
             <article>
@@ -163,4 +163,12 @@
     </footer>
     <script src="src/Scripts/sticky-nav.js"></script>
   </body>
+  <script>
+// document.body.setAttribute("data-theme", "dark");
+// Assume you have some logic to determine the theme dynamically
+// const isDarkMode = "dark"/* Your logic to determine dark mode */;
+
+// Set the data-theme attribute based on the condition
+// document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+</script>
 </html>

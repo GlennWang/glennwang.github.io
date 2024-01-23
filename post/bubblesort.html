@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>演算法筆記-泡沫排序法</title>
+    <link rel="stylesheet" href="../src/Styles/PostPageStyle.css">
+    <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header>
+      <button class="menu">&#9776;</button>
+      <a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
+      <nav>
+        <ul>
+          <li><a href="/requirement.html">需求功能</a></li>
+          <li><a href="/changelog.html">更新日誌</a></li>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+        </ul>
+      </nav>
+    </header>
+    <nav class="dropdown_menu">
+      <ul>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+
+      <main>
+        <div class="content">
+            <div class="img-container">
+                <img src="../src/images/default.jpg" alt="Article Thumbnail 1">
+            </div>
+<article class="markdown-body">
+<h1 dir="auto">演算法筆記-泡沫排序法</h1>
+<h3 dir="auto">簡介</h3>
+<p dir="auto">泡沫排序法(又稱冒泡排序法)是一種基本的排序演算法，它的原理很容易理解。我們可以透過一個簡單的例子來解釋。</p>
+<p dir="auto">假設你手上有一摞卡片，每張卡片上都有一個數字。這些卡片代表我們要排序的數列。我們的目標是把這些卡片按照數字的大小由小到大排列。</p>
+<p dir="auto">現在，我們使用泡沫排序法來達成這個目標。演算法的步驟如下：</p>
+<ol dir="auto">
+<li>從數列的開頭開始，比較相鄰的兩個數字。</li>
+<li>如果左邊的數字比右邊的大，就交換這兩個數字的位置。</li>
+<li>繼續比較下一對相鄰的數字，重複上述步驟，直到數列的最後一對相鄰數字被比較。</li>
+<li>重複整個過程，直到整個數列都按照大小順序排列好。</li>
+</ol>
+<p dir="auto">簡單來說就是從頭開始兩兩比較，一直一直比，到結尾就從頭再開始比，比到它按照大小順序排好。</p>
+<h3 dir="auto">實現</h3>
+<h4 dir="auto">基礎版本</h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">bubble_sort_basic</span>(<span class="pl-s1">array</span>):
+    <span class="pl-s1">sort_array</span> <span class="pl-c1">=</span> <span class="pl-en">list</span>(<span class="pl-s1">array</span>)
+    <span class="pl-s1">n</span> <span class="pl-c1">=</span> <span class="pl-en">len</span>(<span class="pl-s1">sort_array</span>)
+    <span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span>):
+        <span class="pl-c"># python list 的index從0開始到n-1，因為寫了j+1，所以這裡要-1，不然到最後j+1 = n，sort_array[n]就超出範圍了。</span>
+        <span class="pl-k">for</span> <span class="pl-s1">j</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span><span class="pl-c1">-</span><span class="pl-c1">1</span>):
+            <span class="pl-k">if</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>] <span class="pl-c1">&gt;</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>]:
+                <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>] <span class="pl-c1">=</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>]
+    <span class="pl-k">return</span> <span class="pl-s1">sort_array</span></pre></div>
+<p dir="auto">這是最基礎版本的泡沫排序法，時間複雜度是O(n^2)，因為它是兩個for迴圈遍歷整個list，即使你的list本來就是有序的也會一直比較，性能比較差。</p>
+<h4 dir="auto">優化版本</h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">bubble_sort_optimized</span>(<span class="pl-s1">array</span>):
+    <span class="pl-s1">sort_array</span> <span class="pl-c1">=</span> <span class="pl-en">list</span>(<span class="pl-s1">array</span>)
+    <span class="pl-s1">n</span> <span class="pl-c1">=</span> <span class="pl-en">len</span>(<span class="pl-s1">sort_array</span>)
+    <span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span>):
+        <span class="pl-c"># 這裡-i是因為每跑一圈一定會把最大的數字送到最後面，所以已經送到最後面的那些就不用再比較了</span>
+        <span class="pl-k">for</span> <span class="pl-s1">j</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span><span class="pl-c1">-</span><span class="pl-s1">i</span><span class="pl-c1">-</span><span class="pl-c1">1</span>):
+            <span class="pl-k">if</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>] <span class="pl-c1">&gt;</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>]:
+                <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>] <span class="pl-c1">=</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>]
+    <span class="pl-k">return</span> <span class="pl-s1">sort_array</span></pre></div>
+<p dir="auto">這個版本在最基礎版本的基礎上進行了一些優化。它在第二層迴圈減了一個 <code class="notranslate">i</code>，這會讓第二層迴圈每一次跑的步數都減少一次，因為每一輪循環都會把最大的元素放到最後。這樣，已經排序好的部分就不需要再進行比較和交換，減少了多餘的操作，提高了性能。</p>
+<p dir="auto">然而，時間複雜度依舊為O(n^2)，雖然它減少了一些不必要的比較和交換，但在最壞情況下仍然需要兩次完全遍歷。</p>
+<h4 dir="auto">Flag版本</h4>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">bubble_sort_with_flag</span>(<span class="pl-s1">array</span>):
+    <span class="pl-s1">sort_array</span> <span class="pl-c1">=</span> <span class="pl-en">list</span>(<span class="pl-s1">array</span>)
+    <span class="pl-s1">n</span> <span class="pl-c1">=</span> <span class="pl-en">len</span>(<span class="pl-s1">sort_array</span>)
+    <span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span>):
+        <span class="pl-s1">swapped</span> <span class="pl-c1">=</span> <span class="pl-c1">False</span>
+        <span class="pl-k">for</span> <span class="pl-s1">j</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">0</span>, <span class="pl-s1">n</span><span class="pl-c1">-</span><span class="pl-s1">i</span><span class="pl-c1">-</span><span class="pl-c1">1</span>):
+            <span class="pl-k">if</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>] <span class="pl-c1">&gt;</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>]:
+                <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>] <span class="pl-c1">=</span> <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span><span class="pl-c1">+</span><span class="pl-c1">1</span>], <span class="pl-s1">sort_array</span>[<span class="pl-s1">j</span>]
+                <span class="pl-s1">swapped</span> <span class="pl-c1">=</span> <span class="pl-c1">True</span>
+        <span class="pl-k">if</span> <span class="pl-c1">not</span> <span class="pl-s1">swapped</span>:
+            <span class="pl-k">break</span>
+    <span class="pl-k">return</span> <span class="pl-s1">sort_array</span></pre></div>
+<p dir="auto">這個版本在 <code class="notranslate">bubble_sort_optimized</code> 的基礎上進一步進行了優化。它引入了一個布林變數 <code class="notranslate">swapped</code>，當一輪內部循環(就是第二個迴圈)中沒有進行任何交換時，就會提前終止排序，因為這意味著list已經完全排序好。這種方式可以更早地結束排序過程，對於已經有序的數組或近似有序的數組，性能得到進一步提升。</p>
+<p dir="auto">在最好的情況下，即當list已經有序時，時間複雜度為O(n)，因為只需要一次遍歷。在最壞情況下，仍然是O(n^2)，但對於接近有序的數組，平均性能較優。</p>
+<h3 dir="auto">總結</h3>
+<p dir="auto">泡沫排序法是一種簡單但效率較低的排序演算法。</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong><code class="notranslate">bubble_sort_basic</code>：</strong></p>
+<ul dir="auto">
+<li><strong>優點：</strong> 簡單易懂，容易實現。</li>
+<li><strong>缺點：</strong> 效率較低，即使在list已經有序的情況下，仍然需要完全遍歷整個list。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong><code class="notranslate">bubble_sort_optimized</code>：</strong></p>
+<ul dir="auto">
+<li><strong>優點：</strong> 在基本實現的基礎上進行了一些優化，減少了一些不必要的操作。</li>
+<li><strong>缺點：</strong> 儘管有優化，但在最壞情況下仍然需要兩次完全遍歷，性能提升有限。</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong><code class="notranslate">bubble_sort_with_flag</code>：</strong></p>
+<ul dir="auto">
+<li><strong>優點：</strong> 引入了標誌（flag）機制，對於已經有序或近似有序的情況，能夠提前終止排序，進一步提高了性能。</li>
+<li><strong>缺點：</strong> 仍然需要兩次完全遍歷，在最壞情況下性能仍然是O(n^2)，但對於特定情況性能優於前兩者。</li>
+</ul>
+</li>
+</ol>
+</article>
+        </div>
+      </main>
+
+      <aside>
+        <div class="sidebar">
+          <section class="first_section">
+            <p>搜尋框預定地</p>
+          </section>
+          <section>
+            <p>section2</p>
+          </section>
+          <section>
+            <p>section3</p>
+          </section>
+        </div>
+        <div class="sidebar">
+          <Section class="first_section">
+            <p>其他連結預定地</p>
+          </Section>
+        </div>
+        <!-- Your aside content goes here -->
+      </aside>
+
+    </div>
+
+    <footer>
+      <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
+    </footer>
+    
+    <script src="src/Scripts/sticky-nav.js"></script>
+  </body>
+</html>
