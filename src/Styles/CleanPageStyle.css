@@ -259,10 +259,18 @@ footer {
         display: none;
     }
 
+    .dropdown_menu li {
+        display:block;
+    }
+
+    .fixed-nav .dropdown_menu {
+        position: relative;
+    }
+
     .menu {
         display:block;
         background-color: transparent;
-        color:white;
+        color: white !important;;
         font-size: 35px;
         position:absolute;
         top:15px;
