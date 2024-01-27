@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pytest筆記(一)</title>
+    <link rel="stylesheet" href="/src/Styles/PostPageStyle.css">
+    <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body data-theme="">
+    <header>
+      <button class="menu" onclick="toggleDropdown()">&#9776;</button>
+      <a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
+      <nav>
+        <ul>
+          <li><a href="/requirement.html">需求功能</a></li>
+          <li><a href="/changelog.html">更新日誌</a></li>
+          <li><a href="#">預留位置</a></li>
+          <li><a href="#">預留位置</a></li>
+        </ul>
+      </nav>
+    </header>
+    <nav class="dropdown_menu" id="Dropdown">
+      <ul>
+        <li><a href="/Categories.html">文章列表</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+        <li><a href="#">預留位置</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+
+      <main>
+        <div class="content">
+            <div class="img-container">
+                <img src="../src/images/pytest.png" alt="Article Thumbnail 1">
+            </div>
+<article class="markdown-body">
+<h1 dir="auto">Pytest筆記(一)</h1>
+<h3 dir="auto">簡介</h3>
+<p dir="auto"><code class="notranslate">pytest</code> 是一個用於 Python 的測試框架（testing framework）。它用於撰寫單元測試和功能測試，並提供了許多方便的功能和工具，使測試的撰寫和執行更簡單、靈活且易讀。</p>
+<h3 dir="auto">開發環境設置</h3>
+<p dir="auto">首先我新增了一個資料夾，開啟cmd移動到那個目錄，然後建立python的虛擬環境，因此我輸入</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">python -m venv venv_pytest</pre></div>
+<p dir="auto">會發現檔案目錄中出現了venv_pytest資料夾</p>
+<p dir="auto">接著輸入：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">venv_pytest<span class="pl-cce">\S</span>cripts<span class="pl-cce">\a</span>ctivate</pre></div>
+<p dir="auto">就可以啟動那個虛擬環境。</p>
+<p dir="auto">接著輸入：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">python -m pip install --upgrade pip</pre></div>
+<p dir="auto">更新一下你的pip，接著就可以開始安裝使用pytest需要的套件：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Pytest</span>
+pip install pytest
+
+
+<span class="pl-c"><span class="pl-c">#</span> Pytest-mock</span>
+pip install pytest-mock
+
+
+<span class="pl-c"><span class="pl-c">#</span> Pytest-cov</span>
+pip install pytest-cov</pre></div>
+<p dir="auto">接著輸入：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">pytest --version</pre></div>
+<p dir="auto">看看有沒有成功。</p>
+<h3 dir="auto">專案架構</h3>
+<p dir="auto">基本上最簡單的會長的類似這樣：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate"><span class="pl-c1">.</span>
+├── Readme.md
+├── src
+│   ├── __init__.py
+│   └── xxx.py
+└── tests
+    ├── __init__.py
+    └── test_xxx.py</pre></div>
+<ul dir="auto">
+<li>
+<p dir="auto">主程式碼放在<code class="notranslate">src</code>或者各種你想要的命名<code class="notranslate">app</code>、<code class="notranslate">lib</code>、<code class="notranslate">demo</code>之類的</p>
+</li>
+<li>
+<p dir="auto">測試的程式碼放在<code class="notranslate">tests</code>裡面</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">xxx.py</code>跟<code class="notranslate">test_xxx.py</code>可以看出基本上是對應的，還可以看出命名原則</p>
+</li>
+<li>
+<p dir="auto">習慣做法是仿造主專案的結構來寫</p>
+</li>
+</ul>
+<h3 dir="auto">寫第一個測試</h3>
+<p dir="auto">在<code class="notranslate">src/module_a.py</code>：</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-c"># src/module_a.py</span>
+
+<span class="pl-k">def</span> <span class="pl-en">add_numbers</span>(<span class="pl-s1">number1</span>: <span class="pl-s1">int</span>, <span class="pl-s1">number2</span>: <span class="pl-s1">int</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">int</span>:
+    <span class="pl-s">"""將兩個數字加在一起</span>
+<span class="pl-s"></span>
+<span class="pl-s">    Args:</span>
+<span class="pl-s">        number1 (int): 整數 1</span>
+<span class="pl-s">        number2 (int): 整數 2</span>
+<span class="pl-s"></span>
+<span class="pl-s">    Returns:</span>
+<span class="pl-s">        int: 相加後的整數</span>
+<span class="pl-s">    """</span>
+    <span class="pl-k">return</span> <span class="pl-s1">number1</span> <span class="pl-c1">+</span> <span class="pl-s1">number2</span></pre></div>
+<p dir="auto">在<code class="notranslate">tests/test_module_a.py</code>：</p>
+<div class="highlight highlight-source-python" dir="auto"><pre class="notranslate"><span class="pl-c"># tests/test_module_a.py</span>
+<span class="pl-k">from</span> <span class="pl-s1">src</span>.<span class="pl-s1">module_a</span> <span class="pl-k">import</span> <span class="pl-s1">add_numbers</span>
+
+<span class="pl-k">def</span> <span class="pl-en">test_add_numbers</span>():
+    <span class="pl-k">assert</span> <span class="pl-en">add_numbers</span>(<span class="pl-c1">1</span>,<span class="pl-c1">2</span>) <span class="pl-c1">==</span> <span class="pl-c1">3</span></pre></div>
+<p dir="auto">接著就可以跑測試：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 簡潔</span>
+pytest
+
+<span class="pl-c"><span class="pl-c">#</span> 詳細</span>
+pytest -vv</pre></div>
+<p dir="auto">然後會出現：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">================================================= <span class="pl-c1">test</span> session starts =================================================
+platform win32 -- Python 3.11.4, pytest-7.4.4, pluggy-1.4.0 -- D:<span class="pl-cce">\c</span>ode<span class="pl-cce">\p</span>ython<span class="pl-cce">\p</span>ytest_note<span class="pl-cce">\v</span>env_pytest<span class="pl-cce">\S</span>cripts<span class="pl-cce">\p</span>ython.exe
+cachedir: .pytest_cache
+rootdir: D:<span class="pl-cce">\c</span>ode<span class="pl-cce">\p</span>ython<span class="pl-cce">\p</span>ytest_note
+plugins: cov-4.1.0, mock-3.12.0
+collected 1 item
+
+tests/test_module_a.py::test_add_numbers PASSED                                                                  [100%]
+
+================================================== 1 passed <span class="pl-k">in</span> 0.02s ==================================================</pre></div>
+<p dir="auto">代表我們的第一個Test Cases 通過了。</p>
+<h2 dir="auto">Coverage</h2>
+<p dir="auto">接著可以輸入：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">pytest -vv --cov src/</pre></div>
+<p dir="auto">這行指令是為了計算<code class="notranslate">src/</code>有多少比例的程式碼被測試過：</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">---------- coverage: platform win32, python 3.11.4-final-0 -----------
+Name              Stmts   Miss  Cover
+-------------------------------------
+src<span class="pl-cce">\_</span>_init__.py       0      0   100%
+src<span class="pl-cce">\m</span>odule_a.py       2      0   100%
+-------------------------------------
+TOTAL                 2      0   100%</pre></div>
+<p dir="auto">Coverage表格中</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><code class="notranslate">Stmts</code>代表那一個檔案有多少行程式碼</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">Miss</code>代表那一個檔案有多少行程式碼沒被測試到</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">Cover</code>代表覆蓋率</p>
+</li>
+</ul>
+</article>
+        </div>
+      </main>
+
+      <aside>
+        <div class="sidebar">
+          <section class="first_section">
+            <p>搜尋框預定地</p>
+          </section>
+          <section>
+            <p>section2</p>
+          </section>
+          <section>
+            <p>section3</p>
+          </section>
+        </div>
+        <div class="sidebar">
+          <Section class="first_section">
+            <p>其他連結預定地</p>
+          </Section>
+        </div>
+        <!-- Your aside content goes here -->
+      </aside>
+
+    </div>
+
+    <footer>
+      <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
+    </footer>
+    
+    <script src="/src/Scripts/sticky-nav.js"></script>
+    <script src="/src/Scripts/toggleDropdown.js"></script>
+  </body>
+</html>
