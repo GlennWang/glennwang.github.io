@@ -1,52 +1,54 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>文章列表</title>
-    <link rel="stylesheet" href="/src/Styles/CleanPageStyle.css">
-    <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body data-theme="">
-    <header>
-      <button class="menu" onclick="toggleDropdown()">&#9776;</button>
-      <a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
-      <nav>
-        <ul>
-          <li><a href="/requirement.html">需求功能</a></li>
-          <li><a href="/changelog.html">更新日誌</a></li>
-          <li><a href="#">預留位置</a></li>
-          <li><a href="#">預留位置</a></li>
-        </ul>
-      </nav>
-    </header>
-    <nav class="dropdown_menu" id="Dropdown">
-      <ul>
-        <li><a href="/Categories.html">文章列表</a></li>
-        <li><a href="#">預留位置</a></li>
-        <li><a href="#">預留位置</a></li>
-        <li><a href="#">預留位置</a></li>
-      </ul>
-    </nav>
-    <div class="container">
-      <main>
-        <div class="content">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>文章列表</title>
+<link href="/src/Styles/CleanPageStyle.css" rel="stylesheet"/>
+<link href="/src/images/favicon-48x48.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" referrerpolicy="no-referrer" rel="stylesheet"/>
+</head>
+<body data-theme="">
+<header>
+<button class="menu" onclick="toggleDropdown()">☰</button>
+<a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
+<nav>
+<ul>
+<li><a href="/requirement.html">需求功能</a></li>
+<li><a href="/changelog.html">更新日誌</a></li>
+<li><a href="#">預留位置</a></li>
+<li><a href="#">預留位置</a></li>
+</ul>
+</nav>
+</header>
+<nav class="dropdown_menu" id="Dropdown">
+<ul>
+<li><a href="/Categories.html">文章列表</a></li>
+<li><a href="#">預留位置</a></li>
+<li><a href="#">預留位置</a></li>
+<li><a href="#">預留位置</a></li>
+</ul>
+</nav>
+<div class="container">
+<main>
+<div class="content">
 <article class="markdown-body">
 <h1 dir="auto">文章列表</h1>
-<ul dir="auto">
-<li><a href="https://glennwang.github.io/post/bubblesort.html" >演算法筆記-泡沫排序法</a></li>
-<li><a href="https://glennwang.github.io/post/python-function-range.html" >Python range() 函數用法</a></li>
-<li><a href="https://glennwang.github.io/post/web_design_problem_set.html" >網頁設計問題集</a></li>
+<ul dir="auto" id="article-list">
+<li><a href="https://glennwang.github.io/post/bubblesort.html">演算法筆記-泡沫排序法</a></li>
+<li><a href="https://glennwang.github.io/post/pytest-1.html">Pytest筆記(一)</a></li>
+<li><a href="https://glennwang.github.io/post/python-function-range.html">Python range() 函數用法</a></li>
+<li><a href="https://glennwang.github.io/post/web_design_problem_set.html">網頁設計問題集</a></li>
 </ul>
 </article>
-        </div>
-      </main>
-    </div>
-    <footer>
-      <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
-    </footer>
-    <script src="src/Scripts/sticky-nav.js"></script>
-    <script src="/src/Scripts/toggleDropdown.js"></script>
-  </body>
+</div>
+</main>
+</div>
+<footer>
+<p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
+</footer>
+<script src="src/Scripts/sticky-nav.js"></script>
+<script src="/src/Scripts/toggleDropdown.js"></script>
+</body>
 </html>
