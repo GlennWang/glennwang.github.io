@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glenn website!</title>
+    <link rel="stylesheet" href="../src/Styles/GeneralStyle.css">
     <link rel="stylesheet" href="src/Styles/MainPageStyle.css">
     <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
   </head>
   <body data-theme="">
     <header>
-      <button class="menu" onclick="toggleDropdown()">&#9776;</button>
+      <button class="menu" onclick="toggleDropdown()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
       <a href="/index.html"><h1 id="Logo">Glenn's blog</h1></a>
       <nav>
         <ul>
